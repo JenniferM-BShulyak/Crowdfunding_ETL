@@ -4,18 +4,19 @@ Project 2
 -------------
 
 This repository includes:
+
     (1) ETL_Mini_project_JShulyak.ipynb <br />
     (2) crowdfunding_db_schema.sql <br />
     (3) Resources folder <br />
-        a. campaign.csv <br />
-        b. category.csv <br />
-        c. contacts.csv <br />
-        d. contacts.xlsx <br />
-        e. crowdfunding.xlsx <br />
-        f. subcategory.csv <br />
-    (4) Images folder <br />
-        a. crowdfunding_db_ERD.png <br />
-        b. postgres_tables_select_statements.png 
+        a. campaign.csv 
+        b. category.csv 
+        c. contacts.csv 
+        *d.* contacts.xlsx 
+        *e.* crowdfunding.xlsx 
+        *f.* subcategory.csv 
+    (4) Images folder 
+        * crowdfunding_db_ERD.png
+        * postgres_tables_select_statements.png 
 
 -------------
 
@@ -25,7 +26,7 @@ This repository includes:
     (1) import data from the xlsx files
 
     (2) transform the data into four dataframes
-    
+
         a. category: 
             1. category_id (string)
             2. category (string)
@@ -56,6 +57,8 @@ This repository includes:
             4. email (string)
 
     (3) export the dataframes as csv files
+
+    -------------
 
 # crowdfunding_db_schema.sql
 * This sql files builds the tables necessary for the databse. The schema matches the entitity relational diagram located in the images folder. 
