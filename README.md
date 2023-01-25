@@ -5,15 +5,18 @@ Project 2
 
 This repository includes:
 
-    (1) ETL_Mini_project_JShulyak.ipynb <br />
-    (2) crowdfunding_db_schema.sql <br />
-    (3) Resources folder <br />
-        a. campaign.csv 
-        b. category.csv 
-        c. contacts.csv 
-        *d.* contacts.xlsx 
-        *e.* crowdfunding.xlsx 
-        *f.* subcategory.csv 
+    (1) ETL_Mini_project_JShulyak.ipynb 
+
+    (2) crowdfunding_db_schema.sql 
+
+    (3) Resources folder 
+        * campaign.csv 
+        * category.csv 
+        * contacts.csv 
+        * contacts.xlsx 
+        * crowdfunding.xlsx 
+        * subcategory.csv
+        
     (4) Images folder 
         * crowdfunding_db_ERD.png
         * postgres_tables_select_statements.png 
