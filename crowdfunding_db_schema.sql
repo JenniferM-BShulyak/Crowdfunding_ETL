@@ -1,10 +1,10 @@
 ﻿--! Create database
-CREATE DATABASE crowdfunding_db
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
+--! CREATE DATABASE crowdfunding_db
+    --! WITH
+    --! OWNER = postgres
+    --! ENCODING = 'UTF8'
+    --! CONNECTION LIMIT = -1
+    --! IS_TEMPLATE = False;
 
 --! Create table for contacts
 CREATE TABLE "contacts" (

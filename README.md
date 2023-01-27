@@ -72,3 +72,11 @@ This repository includes:
     3. subcategory
     4. campaign
     * As long as the campaign table is last, the schema will work properly. 
+
+* The database must be built separately but can be done using:
+CREATE DATABASE crowdfunding_db
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
