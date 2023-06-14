@@ -1,82 +1,64 @@
 # Crowdfunding_ETL
-Project 2
 
--------------
+## Purpose:
 
-This repository includes:
+The purpose of this project is to find trends in crowdfunding campaigns. Some questions to be investigated include: 
 
-    (1) ETL_Mini_project_JShulyak.ipynb 
 
-    (2) crowdfunding_db_schema.sql 
+## Methodology: 
 
-    (3) Resources folder 
+### Repository: 
+    * ETL_Mini_project_JShulyak.ipynb
+    * crowdfunding_db_schema.sql
+    * Resources
         * campaign.csv 
         * category.csv 
         * contacts.csv 
         * contacts.xlsx 
         * crowdfunding.xlsx 
         * subcategory.csv
-        
-    (4) Images folder 
+    * Images
         * crowdfunding_db_ERD.png
         * postgres_tables_select_statements.png 
 
--------------
+### ETL in Python:
 
-# ETL_Mini_project_JShulyak.ipynb
-* This jupyter notebook uses python to:
+The crowdfunding.xlsx and contacts.xlsx files were loaded into Pandas Dataframes. The dataframes were cleaned and transformed into four organize dataframes. The transformations that occurred included breaking apart columns, converting the date data to datetime format, dropping unwanted fields, and creating primary keys. The transformed dataframes: 
+    (1) category: 
+        * category_id (string)
+        * category (string)
+    (2) subcategory: 
+        * subcategory_id (string)
+        * subcategory (string)
+    (3) campaign:
+        * cf_id (integer)
+        * contact_id (integer)
+        * company_name (string)
+        * description (string)
+        * goal (float)
+        * pledged (float)
+        * backers_count (integer)
+        * country (string)
+        * currency (string)
+        * launch_date (date)
+        * end_date (date)
+        * category_id (string)
+        * subcategory_id (string)
+     (4) contact
+        * contact_id (integer)
+        * first_name (string)
+        * last_name (string)
+        * email (string)
+       
 
-    (1) import data from the xlsx files
+The four transformed dataframes were written as csv files to load into a PostgreSQL database. 
 
-    (2) transform the data into four dataframes
+### Entity Relationship Diagram:
 
-        a. category: 
-            1. category_id (string)
-            2. category (string)
 
-        b. subcategory
-            1. subcategory_id (string)
-            2. subcategory  (string)
 
-        c. campagin
-            1. cf_id (integer)
-            2. contact_id (integer)
-            3. company_name (string)
-            4. description (string)
-            5. goal (float)
-            6. pledged (float)
-            7. backers_count (integer)
-            8. country (string)
-            9. currency (string)
-            10. launch_date (date)
-            11. end_date (date)
-            12. category_id (string)
-            13. subcategory_id (string)
+### Data Exploration in PostgreSQL:
 
-        d. contact
-            1. contact_id (integer)
-            2. first_name (string)
-            3. last_name (string)
-            4. email (string)
+Schema written in PostgreSQL to build and populate tables (one for each transformed csv).
 
-    (3) export the dataframes as csv files
-
-    -------------
-
-# crowdfunding_db_schema.sql
-* This sql files builds the tables necessary for the databse. The schema matches the entitity relational diagram located in the images folder. 
-* Select statements were used to verify that the tables were created and the data imported into them properly. 
-* The csv files should be imported into the tables in the following order:
-    1. contacts
-    2. category
-    3. subcategory
-    4. campaign
-    * As long as the campaign table is last, the schema will work properly. 
-
-* The database must be built separately but can be done using:
-CREATE DATABASE crowdfunding_db
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
+Schema written to answer questions and explore data.
