@@ -55,6 +55,7 @@ The four transformed dataframes were written as csv files to load into a Postgre
 
 ### Entity Relationship Diagram:
 
+![Crowdfunding_Campagin_ERD](Images/crowdfunding_db_ERD.png)
 
 
 ### Data Exploration in PostgreSQL:
