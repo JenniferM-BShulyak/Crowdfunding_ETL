@@ -19,4 +19,10 @@ GROUP BY company_name
 ORDER BY number_campaigns DESC
 LIMIT 10;
 
---! 
+--! Most common categories
+SELECT cat.category, COUNT(cam.category_id) total
+FROM campaign cam
+LEFT JOIN category cat ON cam.category_id = cat.category_id
+GROUP BY cat.category
+ORDER BY total DESC;
+
