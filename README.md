@@ -2,7 +2,10 @@
 
 ## Purpose:
 
-The purpose of this project is to find trends in crowdfunding campaigns. Some questions to be investigated include: 
+The purpose of this project is to find trends in crowdfunding campaigns. Some questions to be investigated include:
+   1. What countries have the most successful campaigns? 
+   2. Which categories of campagins have the most/least success?
+   3. 
 
 
 ## Methodology: 
