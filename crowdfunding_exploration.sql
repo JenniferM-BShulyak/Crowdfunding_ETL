@@ -1,23 +1,9 @@
 --! Country of origin for the most successful campaigns
-SELECT country, COUNT(cf_id) successful_campaigns
+SELECT country, COUNT(cf_id) AS total_campaigns, 
+	ROUND((COUNT(cf_id) FILTER (WHERE pledged > goal))*100.00/COUNT(cf_id),2) AS percent_success
 FROM campaign
-WHERE pledged > goal
 GROUP BY country
-ORDER BY successful_campaigns DESC;
-
---! Country of origin for the most unsuccesful campaigns
-SELECT country, COUNT(cf_id) UNsuccessful_campaigns
-FROM campaign
-WHERE pledged < goal
-GROUP BY country
-ORDER BY UNsuccessful_campaigns DESC;
-
---! Companies with most campaigns
-SELECT company_name, COUNT(cf_id) number_campaigns 
-FROM campaign
-GROUP BY company_name
-ORDER BY number_campaigns DESC
-LIMIT 10;
+ORDER BY total_campaigns DESC;
 
 --! Most common categories and their percentage of success
 WITH category_sum AS(
@@ -33,3 +19,16 @@ SELECT *, ROUND((successful*100.00/total),2) AS percent_success
 FROM category_sum
 ORDER BY percent_success DESC;
 
+--! Companies with most campaigns
+SELECT company_name, COUNT(cf_id) number_campaigns 
+FROM campaign
+GROUP BY company_name
+ORDER BY number_campaigns DESC
+LIMIT 10;
+
+--! Looking for contacts with more than one campaign
+SELECT cam.contact_id, COUNT(cam.*) AS number_campaign
+FROM campaign cam
+GROUP BY cam.contact_id
+ORDER BY number_campaign DESC
+LIMIT 5;
