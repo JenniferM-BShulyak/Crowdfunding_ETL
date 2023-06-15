@@ -11,9 +11,9 @@ The purpose of this project is to find trends in crowdfunding campaigns. Some qu
 ## Methodology: 
 
 ### Repository: 
-    * ETL_Mini_project_JShulyak.ipynb
-    * crowdfunding_db_schema.sql
-    * crowdfunding_exploration.sql
+    * ETL_Mini_project_JShulyak.ipynb -> Python script to extract, transform, and load data
+    * crowdfunding_db_schema.sql -> schema to build tables in PostgreSQL
+    * crowdfunding_exploration.sql -> data exploration through SQL queries
     * Resources
         * campaign.csv 
         * category.csv 
