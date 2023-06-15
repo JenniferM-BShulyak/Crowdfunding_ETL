@@ -4,8 +4,8 @@
 
 The purpose of this project is to find trends in crowdfunding campaigns. Some questions to be investigated include:
    1. What countries have the most successful campaigns? 
-   2. Which categories of campagins have the most/least success?
-   3. 
+   2. Which categories of campaigns have the most/least success?
+   3. Any contacts trying to lead multiple campagins under different company names? 
 
 
 ## Methodology: 
@@ -13,6 +13,7 @@ The purpose of this project is to find trends in crowdfunding campaigns. Some qu
 ### Repository: 
     * ETL_Mini_project_JShulyak.ipynb
     * crowdfunding_db_schema.sql
+    * crowdfunding_exploration.sql
     * Resources
         * campaign.csv 
         * category.csv 
@@ -66,3 +67,13 @@ The four transformed dataframes were written as csv files to load into a Postgre
 Schema written in PostgreSQL to build and populate tables (one for each transformed csv).
 
 Schema written to answer questions and explore data.
+
+## Analysis:
+
+   1. What countries have the most successful campaigns? 
+   2. Which categories of campaigns have the most/least success?
+      * 100% of journalism campaigns have been successful, but there have only been 4 journalism campaigns total.
+      * Technology canpaigns are the next most successful with a success rate of 66.67% from a sample of 96 technology campaigns.
+      * Game campaigns have been the least successful with a success rate of 43.75% from a sample of 48 campaigns.
+      * 
+   4. Any contacts trying to lead multiple campagins under different company names? 
