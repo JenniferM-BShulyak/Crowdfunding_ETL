@@ -32,3 +32,53 @@ FROM campaign cam
 GROUP BY cam.contact_id
 ORDER BY number_campaign DESC
 LIMIT 5;
+
+--! Looking for campaigns by same company; was the second campaign following a first successfull one or after a failed one? 
+
+WITH repeaters AS(	
+	SELECT *,
+	RANK() OVER(PARTITION BY company_name ORDER BY end_date) AS campaign_num 
+	FROM campaign
+	WHERE company_name IN (SELECT company_name 
+						   FROM (SELECT company_name, COUNT(*)
+								FROM campaign
+								GROUP BY company_name HAVING COUNT(*) > 1) AS ranked
+						  	)
+					)
+
+SELECT company_name, goal, pledged 
+FROM repeaters
+WHERE pledged<goal AND campaign_num=1;
+
+--! 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
