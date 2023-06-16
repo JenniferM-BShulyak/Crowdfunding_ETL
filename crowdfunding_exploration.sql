@@ -34,8 +34,7 @@ ORDER BY number_campaign DESC
 LIMIT 5;
 
 --! Looking for campaigns by same company; was the second campaign following a first successfull one or after a failed one? 
-
-WITH repeaters AS(	
+CREATE TEMPORARY TABLE repeaters AS(	
 	SELECT *,
 	RANK() OVER(PARTITION BY company_name ORDER BY end_date) AS campaign_num 
 	FROM campaign
@@ -46,9 +45,10 @@ WITH repeaters AS(
 						  	)
 					)
 
-SELECT company_name, goal, pledged 
-FROM repeaters
-WHERE pledged<goal AND campaign_num=1;
+SELECT company_name, 
+	(CASE WHEN campaign_num=1 THEN pledged END) AS first_attempt,
+	(CASE WHEN campaign_num=2 THEN pledged END) AS second_attempt
+FROM repeaters;
 
 --! 	
 
