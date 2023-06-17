@@ -82,7 +82,16 @@ Schema written to answer questions and explore data.
       * 100% of journalism campaigns have been successful, but there have only been 4 journalism campaigns total.
       * Technology canpaigns are the next most successful with a success rate of 66.67% from a sample of 96 technology campaigns.
       * Game campaigns have been the least successful with a success rate of 43.75% from a sample of 48 campaigns.
-      * 
+      
    3. Any contacts trying to lead multiple campagins under different company names?
       * There are not any scammers! There are not multiple campaigns with the same contact information. However, there are some companies with multiple campaigns. 
+      
    4. There are companies with multiple campaigns. Did they have 2nd attempts at fundraising after intially failing? 
+      ![repeater companies](Images/repeaters_successes.png)
+      
+      * There are 24 companies with more than one campaign. 
+      * Approximately 63% of the companies who started a second campaign had a successful first campaign. 
+      * Of the 14 companies with a successful first campaign, only 8 had a successful second campaign. 
+      * Of the 10 companies with a failed first campaign, 70% had a successful second campaign.
+      
+   5. 
