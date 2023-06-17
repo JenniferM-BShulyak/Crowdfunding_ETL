@@ -33,6 +33,8 @@ GROUP BY cam.contact_id
 ORDER BY number_campaign DESC
 LIMIT 5;
 
+
+--! Temp table to look at repeat companies with their campaigns numbered by end date
 --! Looking for campaigns by same company; was the second campaign following a first successfull one or after a failed one? 
 CREATE TEMPORARY TABLE repeaters AS(	
 	SELECT *,
@@ -44,11 +46,25 @@ CREATE TEMPORARY TABLE repeaters AS(
 								GROUP BY company_name HAVING COUNT(*) > 1) AS ranked
 						  	)
 					)
-
-SELECT company_name, 
-	(CASE WHEN campaign_num=1 THEN pledged END) AS first_attempt,
-	(CASE WHEN campaign_num=2 THEN pledged END) AS second_attempt
+--! How many companies are repeaters?
+SELECT COUNT (DISTINCT company_name)
 FROM repeaters;
+
+--! How many repeat companies had successful first versus second campaigns 
+--! First make a CTE with the calculation for success of each company's campaigns
+--! Then Use case statements to sum up the campaigns based on their successes
+WITH first_second AS (
+	SELECT company_name,
+		SUM(pledged-goal) FILTER (WHERE campaign_num=1) AS first_attempt,
+		SUM(pledged-goal) FILTER (WHERE campaign_num=2) AS second_attempt
+	FROM repeaters
+	GROUP BY company_name)
+
+SELECT SUM(CASE WHEN first_attempt>0 AND second_attempt>0 THEN 1 ELSE 0 END) AS both_successful,
+	SUM(CASE WHEN first_attempt>0 AND second_attempt<0 THEN 1 ELSE 0 END) AS first_successul,
+	SUM(CASE WHEN first_attempt<0 AND second_attempt>0 THEN 1 ELSE 0 END) AS first_failure,
+	SUM(CASE WHEN first_attempt<0 AND second_attempt<0 THEN 1 ELSE 0 END) AS both_failed
+FROM first_second;
 
 --! 	
 
